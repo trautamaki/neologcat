@@ -32,3 +32,23 @@ std::vector<std::string> utils::split(const std::string& str, const std::string&
     } while (pos < str.length() && prev < str.length());
     return tokens;
 }
+
+int utils::stringToMsgType(char c) {
+    c = toupper(c);
+    switch (c) {
+        case 'V':
+            return VERBOSE;
+        case 'D':
+            return DEBUG;
+        case 'I':
+            return INFO;
+        case 'W':
+            return WARNING;
+        case 'E':
+            return ERROR;
+        case 'F':
+            return FATAL;
+        default:
+            return -1;
+    }
+}

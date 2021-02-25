@@ -5,7 +5,14 @@
 #include "reader.h"
 #include "utils.h"
 
-int main() {
+int main(int argc, char **argv) {
+    int wantedColor = -1;
+
+    // Handle arguments
+    if (argc > 1) {
+        wantedColor = utils::stringToMsgType(argv[1][0]);
+    }
+
     reader r("adb logcat");
     while (true) {
         std::string s = r.readLine();
@@ -18,6 +25,12 @@ int main() {
                     std::cout << "\033[0m";
                 }
                 else {
+                    // 5th element is the type
+                    if (wantedColor != -1 && utils::stringToMsgType(parts.at(4).at(0))
+                            != wantedColor) {
+                        continue;
+                    }
+
                     bool codeReached = false;
                     int color = 0;
                     for (std::string part : parts) {
