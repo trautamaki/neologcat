@@ -1,19 +1,19 @@
 #include "utils.h"
 
-int utils::getColorCode(std::string s) {
-    if (s == "D") {
+int utils::getColorCode(char c) {
+    if (c == 'D') {
         return 95;
     }
-    else if (s == "W") {
+    else if (c == 'W') {
         return 93;
     }
-    else if (s == "E") {
+    else if (c == 'E') {
         return 91;
     }
-    else if (s == "F") {
+    else if (c == 'F') {
         return 31;
     }
-    else if (s == "I") {
+    else if (c == 'I') {
         return 94;
     }
     return -1;

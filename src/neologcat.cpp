@@ -22,7 +22,7 @@ int main() {
                     int color = 0;
                     for (std::string part : parts) {
                         if (!codeReached && part.size() == 1) {
-                            color = utils::getColorCode(part);
+                            color = utils::getColorCode(part.at(0));
                             codeReached = true;
                             if (color == -1)
                                 codeReached = false;
